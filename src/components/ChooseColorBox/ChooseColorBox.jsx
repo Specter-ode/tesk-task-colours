@@ -9,11 +9,18 @@ import { ColorPicker, useColor } from 'react-color-palette';
 import { getMatchingColors } from 'src/helpers/getMatchingColor';
 import useDebounce from 'src/helpers/useDebounce';
 
-const ChooseColorBox = ({ setIsChooseColorBox, setGroutColors, selectedGroutColor, setSelectedGroutColor }) => {
+const ChooseColorBox = ({
+  setIsChooseColorBox,
+  setGroutColors,
+  selectedGroutColor,
+  setSelectedGroutColor,
+  groutColors,
+}) => {
   const [isInfoTooltip, setIsInfoTooltip] = useState(false);
   const [pickerColor, setPickerColor] = useColor('rgb', selectedGroutColor.rgbObj);
   const [matchingColors, setMatchingColors] = useState(getMatchingColors(selectedGroutColor, palette));
   const [colorToApply, setColorToApply] = useState(matchingColors[0]);
+  const [dublicateError, setDublicateError] = useState(null);
 
   const getItemClassName = color => {
     if (color === colorToApply.rgb) {
@@ -28,26 +35,39 @@ const ChooseColorBox = ({ setIsChooseColorBox, setGroutColors, selectedGroutColo
   };
 
   const handleAddColor = () => {
-    setGroutColors(prev => {
-      const updatedGroutColors = [...prev].slice(0, prev.length - 1);
-      updatedGroutColors.unshift(colorToApply);
-      return updatedGroutColors;
-    });
-    setSelectedGroutColor(colorToApply);
+    const isDublicate = groutColors.find(el => el.rgb === colorToApply.rgb);
+    if (isDublicate) {
+      setDublicateError(colorToApply);
+    } else {
+      setGroutColors(prev => {
+        const updatedGroutColors = [colorToApply, ...prev.slice(0, 6)];
+        return updatedGroutColors;
+      });
+      setSelectedGroutColor(colorToApply);
+      setDublicateError(null);
+    }
   };
 
   const debouncedValue = useDebounce(pickerColor);
-
 
   useEffect(() => {
     setColorToApply(matchingColors[0]);
   }, [matchingColors]);
 
   useEffect(() => {
-    if(debouncedValue) {
+    if (debouncedValue) {
       findMatchingColors({ rgbObj: debouncedValue.rgb });
     }
   }, [debouncedValue]);
+
+  useEffect(() => {
+    if(dublicateError) {
+      const timeout = setTimeout(() => {
+        setDublicateError(null);
+      }, 5000);
+      return () => clearTimeout(timeout);
+    }
+  }, [dublicateError]);
 
   return (
     <div className={s.container}>
@@ -102,6 +122,7 @@ const ChooseColorBox = ({ setIsChooseColorBox, setGroutColors, selectedGroutColo
       <button className={s.applyBtn} type="button" onClick={handleAddColor}>
         Apply
       </button>
+      {dublicateError && <p className={s.error}>Color {dublicateError.name} {dublicateError.rgb} has been already added </p>}
     </div>
   );
 };

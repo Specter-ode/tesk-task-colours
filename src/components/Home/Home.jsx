@@ -13,8 +13,8 @@ const Home = ({ randomColors }) => {
       <div className={s.box}>
         <Grout
           randomColors={randomColors}
-          setIsChooseColorBox={setIsChooseColorBox}
           groutColors={groutColors}
+          setIsChooseColorBox={setIsChooseColorBox}
           setGroutColors={setGroutColors}
           selectedGroutColor={selectedGroutColor}
           setSelectedGroutColor={setSelectedGroutColor}
@@ -25,6 +25,7 @@ const Home = ({ randomColors }) => {
             setIsChooseColorBox={setIsChooseColorBox}
             selectedGroutColor={selectedGroutColor}
             setSelectedGroutColor={setSelectedGroutColor}
+            groutColors={groutColors}
           />
         )}
       </div>
