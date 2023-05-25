@@ -7,7 +7,7 @@ const Header = () => {
     <header className={s.header}>
     <Link href="/" className={s.link}>
       <Image
-        src="/public/assets/images/logo.png"
+        src="/assets/images/logo.png"
         alt="logo"
         width={117}
         height={28}

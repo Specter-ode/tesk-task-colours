@@ -1,4 +1,8 @@
 .footer {
-    background-color: #D2D2D2;
-    padding: 20px;
+    height: 70px;
+    background-color: #eeeeee;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

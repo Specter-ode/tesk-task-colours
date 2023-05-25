@@ -1,30 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
 
 * {
-	box-sizing: border-box;
-	padding: 0;
-	margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 html,
 body {
-	max-width: 100vw;
-	overflow-x: hidden;
-	color: #282727;
-	line-height: 1.5;
-	font-family: 'Poppins', sans-serif;
+  margin: 0;
+  max-width: 100vw;
+  color: #4f5b67;
+  line-height: 1;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: white;
 }
 
 ul {
-	list-style-type: none;
+  list-style-type: none;
+  padding-left: 0;
 }
 
 img {
-	display: block;
-	max-width: 100%;
-	height: auto;
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 a {
-	color: inherit;
-	text-decoration: none;
+  color: inherit;
+  text-decoration: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+button {
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  border: none;
+}
+
+.rcp-saturation {
+  border-radius: 0 !important;
+}
+
+.rcp-body {
+  position: relative;
+  padding: 27px 24px 27px 60px !important;
+}
+.rcp-hue {
+  height: 10px !important;
+}
+.rcp-hue-cursor {
+	color: #C54244 !important;
+	width:16px !important;
+	height: 16px !important;
+  transform: translate(-7px, -3px) !important;
 }

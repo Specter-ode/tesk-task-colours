@@ -1,0 +1,51 @@
+.container {
+  padding: 24px 24px 24px 22px;
+  width: 264px;
+}
+.title {
+  margin-bottom: 16px;
+  font-weight: 600;
+  font-size: 16px;
+}
+.list {
+  display: flex;
+  margin-bottom: 16px;
+  justify-content: space-between;
+  height: 24px;
+}
+
+.item {
+  border: 2px solid white;
+  width: 24px;
+  height: 24px;
+  border-radius: 1px;
+}
+
+.selected {
+  border: 2px solid #94cea3;
+}
+
+.additionalBox {
+  padding-left: 2px;
+  display: flex;
+  justify-content: space-between;
+}
+.selectedItem {
+  display: flex;
+  align-items: center;
+}
+.selectedColor {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+.selectedName {
+  font-weight: 500;
+  font-size: 14px;
+}
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

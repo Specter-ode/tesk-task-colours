@@ -4,7 +4,7 @@ const Footer = () => {
     return (
       <footer className={s.footer}>
         <p className={s.text}>
-          Developed special for ..
+        &copy; 2023 | Developed by Vladyslav Shchelkunov 
         </p>
       </footer>
     );

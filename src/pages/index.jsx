@@ -1,24 +1,27 @@
+import Home from '@/components/Home/Home';
 import Layout from '@/components/Layout/Layout';
+import { getRandomColors } from 'src/helpers/getRandomColors';
+import palette from '@/assets/data/palette.json';
 
-
-const MainPage = () => {
+const HomePage = ({ randomColors }) => {
   return (
     <Layout
-      title="Main page"
+      title="Home"
       description="Your ultimate destination for designing rooms during renovations or choosing plumbing, wallpaper, tiles, doors, and more"
     >
-      <div>
-        <h1 className="mb-[20px] text-center text-[20px] font-bold text-main-color sTablet:text-[30px]">
-          Welcome to Search Movie App!
-        </h1>
-        <p className="mb-[20px] font-normal sTablet:text-[16px] sLaptop:text-[20px]">
-          Our goal is to provide you with an easy-to-use platform to search for your favorite movies and discover new
-          ones. With our comprehensive movie database, you can search for movies by title or keyword and find detailed
-          information on each movie, including year, ratings, genre, actors and other.
-        </p> 
-      </div>
+      <Home randomColors={randomColors} />
     </Layout>
   );
 };
 
-export default MainPage;
+export async function getServerSideProps() {
+  const randomColors = getRandomColors(palette);
+
+  return {
+    props: {
+      randomColors,
+    },
+  };
+}
+
+export default HomePage;
